@@ -96,7 +96,7 @@ namespace ClassWork.Service.Services
         }
 
         // user token
-        public async ValueTask<UserForResultDto> CheckUserImageAsync(string email, string password = null)
+        public async ValueTask<UserForResultDto> CheckUserAsync(string email, string password = null)
         {
             var user = await this.userRepositoy.SelectAsync(t => t.Email == email);
             if (user is null)

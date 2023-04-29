@@ -14,7 +14,7 @@ namespace ClassWork.Service.Interfaces
         ValueTask<bool> DeleteAsync(long id);
 
         // for token
-        ValueTask<UserForResultDto> CheckUserImageAsync(string email, string password = null);
+        ValueTask<UserForResultDto> CheckUserAsync(string email, string password = null);
 
         // user image methods
 

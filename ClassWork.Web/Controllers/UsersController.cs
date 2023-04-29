@@ -49,5 +49,31 @@ namespace ClassWork.Web.Controllers
             });
 
 
+        [HttpPost("image-upload")]
+        public async Task<IActionResult> UploadImageAsync([FromForm] UserImageForCreationDto dto)
+            => Ok(new
+            {
+                Code = 200,
+                Error = "Success",
+                Data = await this.userService.ImageUploadAsync(dto)
+            });
+
+        [HttpDelete("image-delete/{userId:long}")]
+        public async Task<IActionResult> DeleteUserImageASync(long userId)
+            => Ok(new
+            {
+                Code = 200,
+                Error = "Success",
+                Data = await this.userService.DeleteUserImageAsync(userId)
+            });
+
+        [HttpGet("image-get/{userId:long}")]
+        public async Task<IActionResult> GetUserImageAsync(long userId)
+            => Ok(new
+            {
+                Code = 200,
+                Error = "Success",
+                Data = await this.userService.RetriewUserImageAsync(userId)
+            });
     }
 }

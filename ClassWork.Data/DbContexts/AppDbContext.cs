@@ -9,7 +9,7 @@ namespace ClassWork.Data.DbContexts
         {
         }
 
-        public virtual DbSet<TEntity> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserImage> UserImages { get; set; }
 
     }
