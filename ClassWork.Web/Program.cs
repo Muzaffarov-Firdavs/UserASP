@@ -3,6 +3,7 @@ using ClassWork.Service.Helpers;
 using ClassWork.Service.Mappers;
 using ClassWork.Web.Extensions;
 using ClassWork.Web.Helpers;
+using ClassWork.Web.Middlewares;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -45,6 +46,8 @@ builder.Services.AddControllers(options =>
 
 var app = builder.Build();
 
+EnvironmentHelper.WebHostPath = app.Services.GetRequiredService<IWebHostEnvironment>().WebRootPath;
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -54,6 +57,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseMiddleware<ExceptionHandlerMiddleware>();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
